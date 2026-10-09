@@ -10,7 +10,7 @@ Fine-tune an open-weight LLM into a domain assistant that does three things a re
 
 ---
 
-## What it demonstrates (for hiring managers)
+## What it demonstrates
 
 | Capability | Where to look |
 |---|---|
