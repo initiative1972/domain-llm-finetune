@@ -1,0 +1,4 @@
+# Lightweight deps for CI / unit tests -- no GPU, no model download.
+pytest>=8.0
+flake8>=7.0
+pyyaml>=6.0

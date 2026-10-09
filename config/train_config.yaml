@@ -1,0 +1,38 @@
+# QLoRA SFT configuration for the grounded policy-assistant fine-tune.
+# Swap model_name for any Unsloth 4-bit open-weight model, e.g.:
+#   unsloth/Qwen2.5-7B-Instruct-bnb-4bit
+#   unsloth/mistral-7b-instruct-v0.3-bnb-4bit
+model_name: "unsloth/Meta-Llama-3.1-8B-Instruct-bnb-4bit"
+max_seq_length: 2048
+load_in_4bit: true
+
+# LoRA / QLoRA
+lora_r: 16
+lora_alpha: 16
+lora_dropout: 0.0
+target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# Training
+epochs: 3
+batch_size: 2
+grad_accum: 4
+learning_rate: 0.0002
+warmup_steps: 5
+weight_decay: 0.01
+logging_steps: 5
+seed: 7
+report_to: "none"          # set to "wandb" to log runs
+
+# Paths
+train_path: "data/train.jsonl"
+output_dir: "outputs"
+adapter_dir: "outputs/adapter"
+save_merged_16bit: false
+merged_dir: "outputs/merged"
